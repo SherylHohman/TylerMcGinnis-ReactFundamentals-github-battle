@@ -14,6 +14,8 @@ First command: (creates `package.json`)
 
     npm init
 
+-----
+
 Second command: (creates `node_modules`)  
 
     npm install --save react react-dom
@@ -22,6 +24,8 @@ Third - .gitignore:
 
     node_modules
     dist  
+
+----
 
 Fourth command:      
 
