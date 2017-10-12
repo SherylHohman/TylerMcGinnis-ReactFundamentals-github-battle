@@ -1,0 +1,32 @@
+{
+  "name": "github-battle",
+  "version": "1.0.0",
+  "description": "Compare github stats for two users.  Also list popular repositories for various languages.",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SherylHohman/TylerMcGinnis-ReactFundamentals-github-battle.git"
+  },
+  "keywords": [
+    "react",
+    "github",
+    "classroom",
+    "tutorial",
+    "for",
+    "react",
+    "React",
+    "Fundamentals",
+    "tylermcginnis.com",
+    "Sheryl",
+    "Hohman"
+  ],
+  "author": "Sheryl Hohman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SherylHohman/TylerMcGinnis-ReactFundamentals-github-battle/issues"
+  },
+  "homepage": "https://github.com/SherylHohman/TylerMcGinnis-ReactFundamentals-github-battle#readme"
+}

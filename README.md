@@ -10,11 +10,11 @@ https://github.com/SherylHohman/TylerMcGinnis-ReactFundamentals-github-battle
 
 ## Getting Started  
 ### From Scratch  
-First command:  
+First command: (creates `package.json`)  
 
     npm init
 
-Second command:  
+Second command: (creates `node_modules`)  
 
     npm install --save react react-dom
 
@@ -27,8 +27,9 @@ Fourth command:
 
     npm install --save-dev babel-core babel-loader babel-preset-env babel-preset-react css-loader style-loader html-webpack-plugin webpack webpack-dev-server  
 
+
 ## Pre-Built Scaffold
-Conversely, could instead: (replace my-app with another name)  
+Conversely, could instead: (replace my-app with app to match above folder)  
 
     npm init
     npm install -g create-react-app
