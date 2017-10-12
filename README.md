@@ -30,6 +30,11 @@ Third - .gitignore:
     ./app/index.css
     ./app/index.js
 
+### add dev dependencies: webpack, babel, loaders, dev-server, html-webpack      
+Fourth command:      
+
+    npm install --save-dev babel-core babel-loader babel-preset-env babel-preset-react css-loader style-loader html-webpack-plugin webpack webpack-dev-server  
+
 
 ## Pre-Built Scaffold
 Conversely, could instead: (replace my-app with app to match above folder)  
