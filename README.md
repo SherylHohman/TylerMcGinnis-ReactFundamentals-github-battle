@@ -30,10 +30,32 @@ Third - .gitignore:
     ./app/index.css
     ./app/index.js
 
-### add dev dependencies: webpack, babel, loaders, dev-server, html-webpack      
+### Add dev dependencies: `webpack, babel, loaders, dev-server, html-webpack..`      
 Fourth command:      
 
     npm install --save-dev babel-core babel-loader babel-preset-env babel-preset-react css-loader style-loader html-webpack-plugin webpack webpack-dev-server  
+
+### Webpack configuration (and package.json): **Part 1 Transpiling Code**  
+`webpack.config.js`  rules for transpiling and transforming code   
+  - `entry`  : file that starts the app  
+  - `output` : folder and file that transpiled code should be placed  
+  - `module: { rules: [] }`: loaders/transformation rules  
+    - rules array is a dict: `{test: /.(ext)$/, use: ''}`
+    - where `test` is a regex to match filename (extensions):  
+    - and   `use` is a `string`, or a list of strings: `['x-loader', 'y-loader']`
+    
+**JS transpiling**  
+`babel-loader` looks in `package.json` to see which which babel loaders to use:    
+package.json add:  
+`"babel": { "presets": ["env", "react"] }` to run  
+`babel-presets-react`: transpile JSX into JavaScript    
+`babel-presets-env`  : transpiles latest version of JS to current JS    
+  (eg ES6 classes used by react)   
+ 
+**CSS transpiling**  
+`css-loader` (turn css `import` and `url()` into JS `require('')` statements)  
+`style-loader` inserts our styles, `index.css` into the app    
+now, `require(./index.css);` in  `index.js` becomes valid code.  
 
 
 ## Pre-Built Scaffold
