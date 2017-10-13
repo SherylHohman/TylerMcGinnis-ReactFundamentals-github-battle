@@ -8,9 +8,11 @@ https://github.com/tylermcginnis/React-Fundamentals
 my github repo for this project is :  
 https://github.com/SherylHohman/TylerMcGinnis-ReactFundamentals-github-battle  
 
-## Getting Started - From Scratch    
+# Setting Up a React App (Scaffolding) 
 
-### Add app dependencies | init as a node project (app)   
+## From Scratch..     
+
+### 1) Add app dependencies | init as a node project (app)   
 First command: (creates `package.json`)    
 
     npm init
@@ -24,18 +26,18 @@ Third - .gitignore:
     node_modules
     dist  
 
-### First React Component (`index.js`) and initial file structure  
+### 2) First React Component (`index.js`) and initial file structure  
 
     ./app
     ./app/index.css
     ./app/index.js
 
-### Add dev dependencies: `webpack, babel, loaders, dev-server, html-webpack..`      
+### 3) Add dev dependencies: `webpack, babel, loaders, dev-server, html-webpack..`      
 Fourth command:      
 
     npm install --save-dev babel-core babel-loader babel-preset-env babel-preset-react css-loader style-loader html-webpack-plugin webpack webpack-dev-server  
 
-### Webpack configuration (and package.json): **Part 1 Transpiling Code**  
+### 4) Webpack configuration (and package.json): **Part 1 Transpiling Code**  
 `webpack.config.js`  rules for transpiling and transforming code   
   - `entry`  : file that starts the app  
   - `output` : folder and file that transpiled code should be placed  
@@ -57,7 +59,7 @@ package.json add:
 `style-loader` inserts our styles, `index.css` into the app    
 now, `require(./index.css);` in  `index.js` becomes valid code.  
 
-### Webpack configuration, HTML: **Part 2 Creating `dist/index.html`**  
+### 5) Webpack configuration, HTML: **Part 2 Creating `dist/index.html`**  
 **app/index.html**  
 Create an `app/index.html` that has a (div) tag with `id="app"`, as our
 index.js states to insert our React App code here:  
@@ -72,7 +74,7 @@ insert a script tag to include `index_bundle.js` (defined in webpack's "output"'
     template: 'app/index.html'
     })]`
 
-### npm  `run` script: Part 1 run webpack  
+### 6) npm  `run` script: Part 1 run webpack  
 package.json add property:  
 `"scripts": {"create": "webpack"}`   
 Tells npm to run the webpack script, which transpiles code as described above.  
@@ -90,7 +92,7 @@ Notice: `dist` folder, `dist/index.html`, `dist/index_bundle.js` are created
 to remove `npm run webpack` console warning:  
 “The code generator has deoptimised the styling of [some file] as it exceeds the max of ”500KB“**  
 
-### `npm run start` script: Part 2 run webpack-dev-server  
+### 7) `npm run start` script: Part 2 run webpack-dev-server  
 add script to package.json *(can delete other 2 scripts!)*  
     "start" : "webpack-dev-server --open"
 This will watch for changed files, then auto re-transpile code,
@@ -102,7 +104,7 @@ and updates the app on the fly !! :-)
 Note: it only caches the re-build - doesn't write new dist files.  
 
 
-## .. Pre-Built Scaffold  
+## Pre-Built Scaffold..   
 Or use the `create-react-app` module to scaffold a new react "app":   
 
     npm init
@@ -112,7 +114,9 @@ Or use the `create-react-app` module to scaffold a new react "app":
     npm start  
 This purportedly replaces all the "From Scratch" steps above !  
 
-## Building the App !  
+-----
+
+# Building the App !  
 
 
 
