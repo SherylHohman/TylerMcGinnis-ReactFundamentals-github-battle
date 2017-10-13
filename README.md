@@ -125,9 +125,22 @@ This purportedly replaces all the "From Scratch" steps above !
   - require the file in `index.js`  
 
 ### Add Popular component  
-  - add css styling (`classname="container"`) added to `<App />`'s surrounding `div`   
+  - add css styling (`classname="container"`) added to `<App />`'s surrounding   `div`   
+  - populate dummy "Popular" menu with languages  
+  - style our Popular languages menu  
 
-### populate and style "Popular" menu
+### add State to Popular 
+  - add constructor to Popular, and set its initial state
+  - add `updateLanguage` function for updating state of selected language 
+  -
+  - wire above function, to each list item, so that the component's state is updated (to the selected language) each time a "li" language element is clicked on.  
+  - so each li needs to `bind` its language as the `prop` passed to the `updateLanguage` function.  `this` is already bound, hence pass `null` as the first parameter.  Now the {language} parameter is bound to the updateLanguages function call, and each li (language) has it's own copy of that function bound to it.  
+  - The other `bind` call binds the Popular `this` to the updateLanguages function.  
+  -  `map`'s second argument is `context`.  This way the `this` inside of `map` can be set as `this`  from the `render` method.  **Remember** *anytime `function` keyword is used, a new context is "born".* This means `this` inside that function will be `undefined`, as it's now defaulted back to the window object.  **Note** Arrow functions automatically bind `this` inside the arrow function to the same `this` as outside the function.  Our rule of thumb holds true, as with an "arrow function", we aren't typing the word `function`.. so no new context is created !  
+  -  
+  - Style the Popular menu, to show selected state.  
+
+
 
 
 
