@@ -57,6 +57,21 @@ package.json add:
 `style-loader` inserts our styles, `index.css` into the app    
 now, `require(./index.css);` in  `index.js` becomes valid code.  
 
+### Webpack configuration, HTML: **Part 2 Creating `dist/index.html`**  
+**app/index.html**  
+Create an `app/index.html` that has a (div) tag with `id="app"`, as our
+index.js states to insert our React App code here:  
+`ReactDOM.render( <App />, document.getElementByID('app'));`
+
+**Webpack**: create **dist/index.html**, embed **index_bundle.js** script 
+This will look copy `index.html` from `app` folder to `dist` folder, and
+insert a script tag to include `index_bundle.js` (defined in webpack's "output"' property) to the html file.
+
+    var HtmlWebpackPlugin = require('html-webpack-plugin');
+    plugins: [new HtmlWebpackPlugin({
+    template: 'app/index.html'
+    })]`
+
 
 ## Pre-Built Scaffold
 Conversely, could instead: (replace my-app with app to match above folder)  
