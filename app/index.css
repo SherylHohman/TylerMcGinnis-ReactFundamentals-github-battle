@@ -6,3 +6,22 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
+
+/* universal styles */
+ul {
+  padding: 0;
+}
+li {
+  list-style-type:  none;
+}
+
+/* menu horizontal layout, centered */
+.languages {
+  display:  flex;
+  justify-content: center;
+}
+.languages li {
+  margin:  10px;
+  font-weight: bold;
+  cursor:  pointer;
+}

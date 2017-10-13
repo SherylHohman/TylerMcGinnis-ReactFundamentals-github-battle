@@ -127,7 +127,7 @@ This purportedly replaces all the "From Scratch" steps above !
 ### Add Popular component  
   - add css styling (`classname="container"`) added to `<App />`'s surrounding `div`   
 
-### 
+### populate and style "Popular" menu
 
 
 
