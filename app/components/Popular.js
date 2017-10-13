@@ -6,6 +6,6 @@ class Popular extends React.Component{
       <div> Popular Languages Menu Goes Here </div>
     )
   }
-};
+}
 
 module.exports = Popular;

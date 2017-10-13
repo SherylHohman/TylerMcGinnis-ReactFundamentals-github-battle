@@ -122,7 +122,12 @@ This purportedly replaces all the "From Scratch" steps above !
 ### Refactor React Entry point Component to it's own file
   - Create `app/components` directory
   - export the App class from `app/components/App`  
-  - require the file in `index.js`
+  - require the file in `index.js`  
+
+### Add Popular component  
+  - add css styling (`classname="container"`) added to `<App />`'s surrounding `div`   
+
+### 
 
 
 
