@@ -72,6 +72,25 @@ insert a script tag to include `index_bundle.js` (defined in webpack's "output"'
     template: 'app/index.html'
     })]`
 
+### npm  `run` script: Part 1 run webpack  
+package.json add property:  
+`"scripts": {"create": "webpack"}`   
+Tells npm to run the webpack script, which transpiles code as described above.  
+
+`npm run create`: run the script.   
+Notice: `dist` folder, `dist/index.html`, `dist/index_bundle.js` are created  
+
+>*fixed typo in webpack.config.js `./app/index.js` not `./app.index.js`*  
+>*fixed typo in package.json main: `index.js` not `webpack.config.js`*  
+>*fixed typo in index.js `document.getElementById('app')`   ("Id")
+>--------------------NOT `document.getElementByID('app')`   ("ID")*    
+
+>*added `exclude: /node_modules/` to*  
+      `{ test: /\.(js)$/, exclude: /node_modules/, use: 'babel-loader' }`,  
+to remove `npm run webpack` console warning:  
+“The code generator has deoptimised the styling of [some file] as it exceeds the max of ”500KB“**  
+
+*
 
 ## Pre-Built Scaffold
 Conversely, could instead: (replace my-app with app to match above folder)  

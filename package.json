@@ -1,11 +1,8 @@
 {
   "name": "github-battle",
   "version": "1.0.0",
-  "description": "Compare github stats for two users.  Also list popular repositories for various languages.",
-  "main": "webpack.config.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "Compare github stats for two users.  Also list popular repositories for various languages.  This is the project built in React Training's 'Fundamentals' course.",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SherylHohman/TylerMcGinnis-ReactFundamentals-github-battle.git"
@@ -46,5 +43,9 @@
   },
   "babel": {
     "presets": ["env", "react"]
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1" ,
+    "create": "webpack"
   }
 }

@@ -8,12 +8,12 @@ require('./index.css');
 class App extends React.Component {
   render(){
     return (
-      <div> Hello React! </div>
+      <div> Hello React ! </div>
     )
   }
-}
+};
 
 ReactDOM.render(
   <App />,
-  document.getElementByID('app')
+  document.getElementById('app')
   );

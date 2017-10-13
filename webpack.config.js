@@ -9,7 +9,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   // start file for app ()
-  entry: './app.index.js',
+  entry: './app/index.js',
 
   // where we want transformed code to be put
   output: {
@@ -20,7 +20,7 @@ module.exports = {
   },
 
   // transformations we want to make to our code
-  module: {
+
     // test is a regular expression to match filename extensions;
     // use  is the name of the npm module to run on such files.
 
@@ -32,14 +32,23 @@ module.exports = {
     // 'css-loader':  changes css `import" and "url('') (eg background image)"" references to JS "require('')" statements
     // ' style-loader':  inserts css styles into the page, so styles are active on the page
     // together, they enable us to use `require('./index.css');` in index.js
-    rules: [
-      { test: /\.(js)$/,  use: 'babel-loader' },
-      { test: /\.(css)$/, use: [ 'style-loader', 'css-loader'] }
+
+    // exclude node_modules directory to avoid error:
+    //  “The code generator has deoptimised the styling of [some file] as it exceeds the max of ”500KB“
+    // https://stackoverflow.com/questions/29576341/what-does-the-code-generator-has-deoptimised-the-styling-of-some-file-as-it-e
+
+  module: {
+      rules: [
+      { test: /\.(js)$/, exclude: /node_modules/, use: 'babel-loader' },
+      { test: /\.css$/,  use: [ 'style-loader', 'css-loader'] }
     ]
   },
-  // creates our dist/index.html and adds 'index_bundle.js' script to it, 
+
+  // creates our dist/index.html and adds 'index_bundle.js' script to it,
   //   based on  app/index.html
-  plugins: [new HtmlWebpackPlugin({
-    template: 'app/index.html'
-  })]
-}
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'app/index.html'
+    })
+  ]
+};
