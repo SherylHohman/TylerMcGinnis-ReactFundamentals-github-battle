@@ -32,14 +32,14 @@ class Popular extends React.Component{
         {languages.map(function(language){
           return (
             <li
+              style={language === this.state.selectedLanguage ? {color: '#d0021b'} : null}
               onClick={this.updateLanguage.bind(null, language)}
-              key={language} >
+              key={language}
+              >
               {language}
             </li>
           )
         }, this)}
-    
-        <p><br />Selected Language: {this.state.selectedLanguage} </p>
       </ul>
       // map takes a context parameter, so "this" inside map's "function" is the same as "this" of render()
       // so we are passing in `this` so onClick handler has a "defined" value for `this`

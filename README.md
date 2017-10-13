@@ -138,7 +138,7 @@ This purportedly replaces all the "From Scratch" steps above !
   - The other `bind` call binds the Popular `this` to the updateLanguages function.  
   -  `map`'s second argument is `context`.  This way the `this` inside of `map` can be set as `this`  from the `render` method.  **Remember** *anytime `function` keyword is used, a new context is "born".* This means `this` inside that function will be `undefined`, as it's now defaulted back to the window object.  **Note** Arrow functions automatically bind `this` inside the arrow function to the same `this` as outside the function.  Our rule of thumb holds true, as with an "arrow function", we aren't typing the word `function`.. so no new context is created !  
   -  
-  - Style the Popular menu, to show selected state.  
+  - inline `style` the Popular menu li item, to highlight state (selected language.)  
 
 
 
