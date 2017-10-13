@@ -10,7 +10,7 @@ https://github.com/SherylHohman/TylerMcGinnis-ReactFundamentals-github-battle
 
 ## Getting Started - From Scratch    
 
-### add app dependencies | init as a node project (app)   
+### Add app dependencies | init as a node project (app)   
 First command: (creates `package.json`)    
 
     npm init
@@ -90,17 +90,29 @@ Notice: `dist` folder, `dist/index.html`, `dist/index_bundle.js` are created
 to remove `npm run webpack` console warning:  
 “The code generator has deoptimised the styling of [some file] as it exceeds the max of ”500KB“**  
 
-*
+### `npm run start` script: Part 2 run webpack-dev-server  
+add script to package.json *(can delete other 2 scripts!)*  
+    "start" : "webpack-dev-server --open"
+This will watch for changed files, then auto re-transpile code,
+--open tells it to open index.html in the defaut browser.
 
-## Pre-Built Scaffold
-Conversely, could instead: (replace my-app with app to match above folder)  
+This module runs a mini express server on localhost:8080
+and updates the app on the fly !! :-)  
+
+Note: it only caches the re-build - doesn't write new dist files.  
+
+
+## .. Pre-Built Scaffold  
+Or use the `create-react-app` module to scaffold a new react "app":   
 
     npm init
     npm install -g create-react-app
-    create-react-app my-app
-    cd my-app
-    npm start
+    create-react-app app
+    cd app
+    npm start  
+This purportedly replaces all the "From Scratch" steps above !  
 
+## Building the App !  
 
 
 
