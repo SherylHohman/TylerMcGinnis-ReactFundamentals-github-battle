@@ -118,7 +118,9 @@ This purportedly replaces all the "From Scratch" steps above !
 
 # Building the App !  
 
-## Build Menu that will be used on "popular" route  
+## Build Popular Menu component that will be used on "/popular" route   
+>branch: 1_popular_menu_and_setting-state  
+
 ### Refactor React Entry point Component to it's own file
   - Create `app/components` directory
   - export the App class from `app/components/App`  
@@ -140,6 +142,41 @@ This purportedly replaces all the "From Scratch" steps above !
   -  
   - inline `style` the Popular menu li item, to highlight state (selected language.)  
 
+### refactor Popular menu to it's own component (SelectLanguage) 
+It will remain inside Popular component file, as only Popular will be using it.  
+This simplifies Popular's render method, for when..  
+Popular also renders a grid of popular languages.  
+
+P.S. I might change the new `SelectLanguage` component's  
+name to `LanguageMenu` or `LanguageTabs`, as that is what it *IS*, as a Component.  
+
+#### npm install --save prop-types  
+Since we are now passing data from one component to another, we need to start using PropTypes to ensure we are passing along the intended data types.  This also makes it easier to read the code: quickly assertain what data is being passed around and used by each  component.
+
+    var PropTypes = require('PropTypes');
+
+  SelectLanguage.propTypes = {
+    selectedLanguage: PropTypes.string.isRequired,
+    onSelect: PropTypes.func.isRequired,
+  };
+
+#### changes to Popular  
+      // Notice: we are passing the Popular-bound "updateLanguage" function in under a new nameL onSelect.  
+      // This name change was not required (this.state.selectedLanguage didn't change names.)  
+      // But it does highlight its new role, in reference to its new location.
+      // Notice also, that its already bound (via the constructor call) to this instance of the Popular class.  
+      // We do the second set of bindinge - that to and individual language, and list item -- in our SelectedLanguage component, when the li's are rendered.  This is the same as before.  
+
+#### changes to SelectLanguage (code prev inside Popular)  
+      // now that SelectedLanguage is its own component, - ie it does not live INSIDE the Popular class..  
+      // `this.updateLanguage` and `this.state.selectedLanguage` are no longer valid references -- that function, and that data live in Popular, not SelectLanguage.  
+      // So.. we need to pass those values in as `props` FROM Popular TO SelectLanguage.  
+      // Hence the new references (variable) names are:  
+      // `this.props.selectedLanguage` (data passed in), and  
+      // `this.props.updateLanguage` (the function "template" that we will use to create new bound (updateLanguage) functions for each individual li (language))  
+      // Remember that the "template" updateLanguage function that is passed into this function, is already bound(this variable) to that invocation of the "Popular" component (via its constructor.)  
+      // Actually.. I'll be passing the bound updateLanguage function in as a prop under the variable name props.onSelect, NOT props.updateLanguage.  
+      //Since we are passing data in from one Componenet (Popular)down to another Component (SelectLanguage), we need to use PropTypes to ensure the correct data types are being passed.  
 
 
 
