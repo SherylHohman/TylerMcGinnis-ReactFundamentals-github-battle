@@ -178,6 +178,15 @@ Since we are now passing data from one component to another, we need to start us
       // Actually.. I'll be passing the bound updateLanguage function in as a prop under the variable name props.onSelect, NOT props.updateLanguage.  
       //Since we are passing data in from one Componenet (Popular)down to another Component (SelectLanguage), we need to use PropTypes to ensure the correct data types are being passed.  
 
+#### Refactor SelectLanguage to Stateless Functional Component  
+
+   // REFACTOR to Stateless Functional Component  
+    // as a (stateless) functional component..  
+    // rather than an OBJECT (class), there is NO `this`.  
+    // we Pass IN `props` instead.  
+    // thus change all references of `this.props.`.. to just `props.`  
+    // Also, we need NOT the second parameter `this` passed into `map` anymore.  We're just using `props` parameter that was passed in.  
+    // then all should be good to go!  
 
 
 
