@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/SherylHohman/TylerMcGinnis-ReactFundamentals-github-battle#readme",
   "dependencies": {
+    "axios": "^0.16.2",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
