@@ -3,11 +3,19 @@
   <head>
     <meta charset = "UTF-8">
     <title>Github Battle</title>
+
+    <!-- This will pull in an external Bluebird Promise Library, so can Promises (and thus "axios" library for AJAX requests) on IE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+    <!-- Fixes "'Promise' is undefined error" in IE -->
+
   </head>
   <body>
     <div id="app">
-       React renders "App" Component here (id="app"), as specified in 'index.js'.  App is ROOT component for the entire React App!
-       This text will get replaced with my React Generated Content!
+       React renders "App" Component here
+       <!-- (element with id="app"), as specified in 'index.js'.
+       App is ROOT component for the entire React App!
+       This text, and the entire contents of this div,
+        -  will get replaced with my React Generated Content! -->
     </div>
   </body>
 </html>

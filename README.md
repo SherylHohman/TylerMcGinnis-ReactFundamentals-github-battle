@@ -222,10 +222,51 @@ Also, we need NOT the second parameter `this` passed into `map` anymore.  We're 
 
 
 next up...  
-## Build Popular - Repositories   
+## Build: Popular Repositories Component  
 > branch:   2_popular_repositories_and_ajax_requests  
 
-### npm install --save axios  
+### Axios: (AJAX)  
+#### npm install --save axios   
+To make promise-based http client. It's used to make ajax requests.  
+#### http requests to github   
+  - Create `utils/api.js` folder and file  
+  - use `window.encodeURI` to translate "human readable" URL into "computer encoded" URL ie a "space" becomes "%20", etc.  
+[github search api, and rate limit](https://developer.github.com/v3/search/#search-repositories)     
+`https://api.github.com/search/repositories?q=stars:>1+language:'+ language + '&sort=stars&order=desc&type=Repositories`  
+The URI we use searches the Repositories api, returning repositories that:
+    - have more than 1 star  
+    - are in language `language`  
+    - sorted by number of stars  
+    -   in descending order  
+  By default 30 repositories are returned.  
+  Rate limit is 10 per second. *Whew*
+
+
+#### Promises  
+`.then` will wait to return the result of the API request  
+to the function that called *this* function only  
+AFTER it's heard back from github.  
+
+**Note: for Internet Explorer
+>'Promise' is undefined error in IE
+
+Need to pull in an external `Bluebird Promise Library`, to be able to use Promises (and hence `axios`) on IE  
+Add to `index.html` `head` section:  
+    `<script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>`  
+ref: https://stackoverflow.com/questions/36831372/promise-is-undefined-in-ie  
+
+#### `response.data.items`   
+`Popular` is only interested in the the `data.items` property of the response.    
+Each `items` object has the: reponame, avatar, username, etc  
+  Return *just the* `data.items`* property to Popular.  
+*By default, 30 repos are returned per request.*  
+
+Put a console log here to see request.  
+-- but we can only see the result once it's called from `Popular.js` !!  
+Until then, paste the URL into a browser window (replace "language" var with an actual language, like "Javascript") to  
+  - test the format of the URI request, and  
+  - see the JSON response.  
+
 
 
 
