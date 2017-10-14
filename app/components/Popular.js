@@ -1,5 +1,6 @@
 var React = require('react');
 var PropTypes = require('prop-types');
+var api  = require('../utils/api.js');
 
 function SelectLanguage(props){
   // might change name to: LanguageMenu or LanguageTabs
@@ -34,11 +35,18 @@ class Popular extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      selectedLanguage: 'All'
+      selectedLanguage: 'All',
+      repos: null
     }
     this.updateLanguage = this.updateLanguage.bind(this);
     // returns a new function (this.updateLanguage) whose context is always this instance of "Popular" as the `this` inside the updateLanguage function.
   }
+  componentDidMount() {
+    api.fetchPopularRepos(this.state.selectedLanguage)
+      .then(function(repos){
+          console.log("Popular: repos\n", repos)
+        });
+ }
   updateLanguage(language){
     this.setState(function() {
       return {
