@@ -142,6 +142,38 @@ This purportedly replaces all the "From Scratch" steps above !
   -  
   - inline `style` the Popular menu li item, to highlight state (selected language.)  
 
+#### notes: `this.updateLanguage = this.updateLanguage.bind(this);`
+    class Popular extends React.Component{
+      constructor(props){
+        super();
+        this.state = {
+          selectedLanguage: 'All'
+        }
+        this.updateLanguage = this.updateLanguage.bind(this);
+    }  
+// returns a new function (this.updateLanguage) whose context is always "Popular" as the `this`  
+// So, inside "updateLanguage", `this.setState` is always bound to `this` referring to the Popular component.  
+
+// any reference to updateLanguage is now bound to Popular component as the `this` reference  
+// `this.setState` inside updateLanguage:  
+//  we cannot know what `this` refers to until it's invoked (left of the dot)  
+// but with the `bind` property, we can bind that `this` to always refer to "Popular" component via the above line.  
+
+#### notes: `props.onSelect.bind(null, language)`
+          <li
+              onClick={props.onSelect.bind(null, language)}
+              key={language}>
+              {language}
+          </li> 
+  // map takes a context parameter, so "this" inside map's "function" is the same as "this" of render() (ie same context INDIDE the function, as OUTSIDE the function).   
+
+   // Use `bind` on li's onClick handler, to BIND the Language PARAMETER to a New copy of the Function, attaching The new customized Function to the onClick handler for THAT li element.  
+  // Now, clicking on any <li> element will call setState, with the language value BOUND to that <li> !  
+  // Note: `null` is passed in as bind's first parameter.  since context `this` is already bound (fron the Popular constuctor).  
+
+  // so we are passing in `this` so the onClick handler has a "defined" value for `this`, instead of `undefined` due to the new context.  
+ 
+
 ### refactor Popular menu to it's own component (SelectLanguage) 
 It will remain inside Popular component file, as only Popular will be using it.  
 This simplifies Popular's render method, for when..  
