@@ -267,12 +267,13 @@ Until then, paste the URL into a browser window (replace "language" var with an 
   - test the format of the URI request, and  
   - see the JSON response.  
 
-### Console.log our AJAX/axios/github api response
-#### Add new state var `repos` to Popular component  
+### Display Popular Repos in Popular.js
+#### Wire AJAX request fetchPopularRepos() to Popular.js
+##### Add new state var `repos` to Popular component  
   - `api = require('../utils/api.js');`  
   - in `constructor` add new state variable: `repos` initialized to `null`    
 
-#### React Lifecycles: componentDidMount in Popular.js  
+##### Ddd componentDidMount Lifecycle (stub) in Popular.js  
 to `console.log` the response from our github request  
 
     componentDidMount() {
