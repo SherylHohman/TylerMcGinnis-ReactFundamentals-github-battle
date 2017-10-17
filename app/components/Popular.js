@@ -29,6 +29,7 @@ SelectLanguage.propTypes = {
   selectedLanguage: PropTypes.string.isRequired,
   onSelect: PropTypes.func.isRequired,
 };
+  // onSelect stores a function that is bound to the currently selected language, this func sends a github api request (popular repos) for the the bound selected language and returns to us the data we're interested in.
 
 
 class Popular extends React.Component{
@@ -44,16 +45,24 @@ class Popular extends React.Component{
   componentDidMount() {
     api.fetchPopularRepos(this.state.selectedLanguage)
       .then(function(repos){
-          console.log("Popular: repos\n", repos)
+          console.log("Popular repos:\n", repos)
         });
  }
+
   updateLanguage(language){
     this.setState(function() {
+      // console.log("\n", language, "\n")
       return {
         selectedLanguage: language,
       }
     });
+    api.fetchPopularRepos(language)
+      .then(function(repos){
+        console.log("Popular _", language, "_ repos:\n", repos)
+    });
+
   }
+
   render(){
     return(
         <div>

@@ -273,7 +273,7 @@ Until then, paste the URL into a browser window (replace "language" var with an 
   - `api = require('../utils/api.js');`  
   - in `constructor` add new state variable: `repos` initialized to `null`    
 
-##### Ddd componentDidMount Lifecycle (stub) in Popular.js  
+##### Add componentDidMount Lifecycle (stub) in Popular.js  
 to `console.log` the response from our github request  
 
     componentDidMount() {
@@ -281,7 +281,14 @@ to `console.log` the response from our github request
         .then(function(repos){
             console.log(repos)
           })
-     }  
+     }
+
+##### update Popular Repos when language is changed  
+copy fetchPopularRepos request to the "updateLanguage" function  
+so that when a new language is clicked on, we get the data for the new language.  
+Prior to this, we only made the api call when the page was loaded initially via `componentWillMount`  
+
+
 
 
 
