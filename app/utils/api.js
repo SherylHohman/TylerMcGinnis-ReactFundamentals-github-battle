@@ -6,9 +6,6 @@ module.exports = {
 
     return axios.get(encodedURI)
       .then(function(response) {
-        console.log("api: language:", language);
-        console.log("api: response:\n", response);
-        console.log("api: response.data.items:\n", response.data.items);
         return response.data.items;
       });
   }
