@@ -283,10 +283,20 @@ to `console.log` the response from our github request
           })
      }
 
-##### update Popular Repos when language is changed  
+##### Update Popular Repos when language is changed  
 copy fetchPopularRepos request to the "updateLanguage" function  
 so that when a new language is clicked on, we get the data for the new language.  
 Prior to this, we only made the api call when the page was loaded initially via `componentWillMount`  
+
+##### remove api (direct) call from componentWillMount
+Instead, have it call updateLanguage().  
+updateLanguage now makes the api call.  
+Thus anytime a language has been changed, the api call is made, and new data (repos) are displayed.  
+The two places a language changes are  
+ 1) at the Popular component constructor (defaulted to "All").  This case is handeld in `componentDidMount` by calling updateLanguage.  (sure, selected language gets set to state twice in this case.)  
+ 2) when the user clicks on language in updateLanguages menu.  
+
+
 
 
 
