@@ -297,6 +297,23 @@ The two places a language changes are
  2) when the user clicks on language in updateLanguages menu.  
 
 
+#### Render our Popular Repos  
+##### `this.setState` triggers a component to re-render  
+`updateLanguage` must call setState (instead of console.log), to tell REACT to write some data to our app/webpage/component.  
+
+this.setstate calls our component's `render` function  
+  - (TEMP) use `JSON.stringify` to turn the results of our getPopularRepos function .   
+  -   - second param is "null", to turn the entire object into a string  
+  -   -   or a "filter" : array of properties from our JSON object that we are interested in  
+  -   - 3rd param is the number of spaces to separate each property by, or a string (up to 10 chars), to separate each property by for display/formatting purposes   
+
+the function returned from our api call (as `.then`) MUST BE BOUND to the `this`of the calling function.  
+  - otherwise `this.setstate` will be undefined   
+
+  
+
+
+
 
 
 
