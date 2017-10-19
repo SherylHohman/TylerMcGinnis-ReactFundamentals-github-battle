@@ -23,13 +23,29 @@ function SelectLanguage(props){
       // Now, clicking on any <li> element will call setState, with the language value BOUND to that <li> !
       // Note: `null` is passed in as bind's first parameter.  since context `this` is already bound (fron the Popular constuctor).
 }
-
-
 SelectLanguage.propTypes = {
   selectedLanguage: PropTypes.string.isRequired,
   onSelect: PropTypes.func.isRequired,
 };
   // onSelect holds the github api request for the currently selected language (well the function that calls the api, and gives us back our data)
+
+function PopularRepos(props){
+    return (
+      <ul className="repos">
+        {repos.map(function(repo){
+          return (
+            <li
+              key={repo.id}>
+              {repo.name}
+            </li>
+          )
+        })}
+      </ul>
+    )
+}
+PopularRepos.propTypes = {
+  repos: PropTypes.object.isRequired,
+};
 
 class Popular extends React.Component{
   constructor(props){
@@ -53,19 +69,17 @@ class Popular extends React.Component{
     });
     api.fetchPopularRepos(language)
       .then(function(repos){
-        console.log("Popular _", language, "_ repos:\n", repos);
+        console.log(language, ":\n", repos)
         // to display the data in our view/component/webpage
         // we need to call "setState" - that's what triggers a UI re-Render
-        // (for now we'll simply render a string representation of the  `repos` object)
         this.setState(function(){
           return {
             repos: repos,
           }
         })
     }.bind(this));
+          // our returned api function must be bound
           // REM to BIND this context to function returned/"passed into" `.then`, AND pass that in as 2nd parameter to `.then`, else `this.setState` will be undefined
-          // our api function must be bound
-
   }
 
   render(){
@@ -75,8 +89,10 @@ class Popular extends React.Component{
           selectedLanguage={this.state.selectedLanguage}
           onSelect={this.updateLanguage}
         />
-        {JSON.stringify(this.state.repos, ['name'], '\n')}
-
+        <PopularRepos
+          repos={this.state.repos}
+        />
+        {JSON.stringify(this.state.repos, ['id', 'name'], '\n')}
         </div>
     )
     // JSON stringify will turn the data from our api call into a string

@@ -310,7 +310,18 @@ this.setstate calls our component's `render` function
 the function returned from our api call (as `.then`) MUST BE BOUND to the `this`of the calling function.  
   - otherwise `this.setstate` will be undefined   
 
+##### Add PopularRepos stateless functional Component  
+  - key uses repos.id  
+  - Add PropTypes for PopularRepos  
+  - Add `PopularRepos' Component to `Popular`'s  `render()` function  
   
+  NOTE: there is now a problem: `repos` is undefined (null, actually), when the page loads.  
+ >Warning: Failed prop type: The prop `repos` is marked as required in `<<anonymous>>`, but its value is `null`.  
+>The above error occurred in one of your React components:  
+>SCRIPT5009: 'repos' is undefined  
+
+This is because ...
+
 
 
 
