@@ -310,7 +310,7 @@ this.setstate calls our component's `render` function
 the function returned from our api call (as `.then`) MUST BE BOUND to the `this`of the calling function.  
   - otherwise `this.setstate` will be undefined   
 
-##### Add PopularRepos stateless functional Component  
+##### Add PopularRepos stateless functional Component (STUMP)  
   - key uses repos.id  
   - Add PropTypes for PopularRepos  
   - Add `PopularRepos' Component to `Popular`'s  `render()` function  
@@ -321,6 +321,28 @@ the function returned from our api call (as `.then`) MUST BE BOUND to the `this`
 >SCRIPT5009: 'repos' is undefined  
 
 This is because ...
+  - `Popular.constructor` sets this.state.repos to `null`,  
+  - then when `componentDidMount` is called..  
+  - `updateLanguages` is called..  
+  - which calls `this.setState` for the `language` ..   
+  - but *that* triggers Popular to `render`,  
+  - which tells `PopularRepos` to render --  
+  - -- but **`this.state.repos` is still `null` -- it hasn't been set yet**  
+  - OUCH!
+
+  - **We are Rendering PopularRepos BEFORE we have a response from the api**  
+
+##### The FIX : Render `PopularRepos`  only if repos not empty !!
+  - render "Loading" if `this.state.repos` is falsey (null, empty array..)  
+  - When api has returned data..  
+  - repos `this.setState` will be called.  
+  - This triggers another re-render of Popular, hence `PopularRepos`  
+  - .. and then the PopularRepos will appear !  
+
+//##### Build out `PopularRepos` Component and CSS styles  
+
+
+
 
 
 

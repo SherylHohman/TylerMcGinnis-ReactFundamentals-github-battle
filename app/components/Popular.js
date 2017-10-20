@@ -32,19 +32,20 @@ SelectLanguage.propTypes = {
 function PopularRepos(props){
     return (
       <ul className="repos">
-        {repos.map(function(repo){
+        {props.repos.map(function(repo){
           return (
             <li
-              key={repo.id}>
+              key={repo.id}
+              className='repo-item'>
               {repo.name}
             </li>
           )
-        })}
+        }, this)}
       </ul>
     )
 }
 PopularRepos.propTypes = {
-  repos: PropTypes.object.isRequired,
+  repos: PropTypes.array.isRequired,
 };
 
 class Popular extends React.Component{
@@ -83,18 +84,20 @@ class Popular extends React.Component{
   }
 
   render(){
-    return(
-        <div>
+    return (
+      <div>
         <SelectLanguage
           selectedLanguage={this.state.selectedLanguage}
           onSelect={this.updateLanguage}
         />
-        <PopularRepos
-          repos={this.state.repos}
-        />
+        {!this.state.repos
+          ? <p> Fetching Popular Repos for : {this.state.selectedLanguage}</p>
+          : <PopularRepos repos={this.state.repos} />
+        }
         {JSON.stringify(this.state.repos, ['id', 'name'], '\n')}
-        </div>
+      </div>
     )
+    // evidentally, the ternary construct needs to be wrapped in {} braces to render correctly
     // JSON stringify will turn the data from our api call into a string
     //  so we can view in in our component/webpage.
     //  this is temporary - in next step we'll use JSX instead
