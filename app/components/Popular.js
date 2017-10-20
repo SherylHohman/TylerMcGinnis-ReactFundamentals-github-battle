@@ -32,12 +32,22 @@ SelectLanguage.propTypes = {
 function PopularRepos(props){
     return (
       <ul className="repos">
-        {props.repos.map(function(repo){
+        {props.repos.map(function(repo, index){
           return (
-            <li
-              key={repo.id}
-              className='repo-item'>
-              {repo.name}
+            <li key={repo.id} className='repo-item'>
+              <div className='repo-rank'>#{index + 1}</div>
+              <ul className='sub-item-spacing'>
+                <li>
+                  <img
+                    className='avatar'
+                    src={repo.owner.avatar_url}
+                    alt={'Avatar for ' + repo.owner.login}
+                  />
+                </li>
+                <li><a href={repo.html_url}>{repo.name}</a></li>
+                <li>@{repo.owner.login}</li>
+                <li>{repo.stargazers_count} stars</li>
+              </ul>
             </li>
           )
         }, this)}
@@ -70,7 +80,6 @@ class Popular extends React.Component{
     });
     api.fetchPopularRepos(language)
       .then(function(repos){
-        console.log(language, ":\n", repos)
         // to display the data in our view/component/webpage
         // we need to call "setState" - that's what triggers a UI re-Render
         this.setState(function(){
@@ -94,7 +103,6 @@ class Popular extends React.Component{
           ? <p> Fetching Popular Repos for : {this.state.selectedLanguage}</p>
           : <PopularRepos repos={this.state.repos} />
         }
-        {JSON.stringify(this.state.repos, ['id', 'name'], '\n')}
       </div>
     )
     // evidentally, the ternary construct needs to be wrapped in {} braces to render correctly

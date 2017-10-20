@@ -339,7 +339,9 @@ This is because ...
   - This triggers another re-render of Popular, hence `PopularRepos`  
   - .. and then the PopularRepos will appear !  
 
-//##### Build out `PopularRepos` Component and CSS styles  
+##### Build out `PopularRepos` Component and its CSS styles    
+Also remove console.logs and temp text renderings  
+
 
 
 

@@ -15,6 +15,7 @@ li {
   list-style-type:  none;
 }
 
+/* selectLanguage component */
 /* menu horizontal layout, centered */
 .languages {
   display:  flex;
@@ -25,3 +26,31 @@ li {
   font-weight: bold;
   cursor:  pointer;
 }
+
+/* PopularRepos component */
+.repos {
+  display:  flex;
+  justify-content:  space-around;
+  flex-wrap:  wrap;
+}
+
+.repo-item{
+  margin:  20px;
+  text-align:  center;
+}
+
+.repo-rank{
+  font-size: 20px;
+  margin: 10px;
+}
+
+/* common */
+.avatar {
+  width:  150px;
+  border-radius:  50%;
+}
+
+.sub-item-spacing {
+  margin-bottom:  7px;
+}
+
